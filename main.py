@@ -18,7 +18,6 @@ LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')
 def _logger():
     '''
     Setup logger format, level, and handler.
-
     RETURNS: log object
     '''
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -79,7 +78,7 @@ def auth():
 
     user_data = body
 
-    return jsonify(token=_get_jwt(user_data))
+    return jsonify(token=_get_jwt(user_data).decode('utf-8'))
 
 
 @APP.route('/contents', methods=['GET'])
